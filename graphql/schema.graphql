@@ -1,9 +1,10 @@
 type Movie {
-    id: Int!
-    title: String!
-    rating: Int!
-    year: Int!
-    summary: String!
+    id: Int
+    title: String
+    rating: Int
+    year: Int
+    summary: String
+    medium_cover_image: String
 }
 
 type Query{
