@@ -5,9 +5,10 @@ type Movie {
     year: Int
     summary: String
     medium_cover_image: String
+    language: String
 }
 
 type Query{
     movies: [Movie]
-    movie(title: String!): Movie
+    movie(id: Int!): Movie
 }
