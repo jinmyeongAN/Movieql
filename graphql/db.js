@@ -1,17 +1,33 @@
-import fetch from "node-fetch";
+import axios from "axios";
+const BASE_URL = "https://yts.mx/api/v2/";
+const LIST_MOVIES_URL = `${BASE_URL}list_movies.json`;
+const MOVIE_DETAILS_URL = `${BASE_URL}movie_details.json`;
 
-const API_URL = "https://yts.am/api/v2/list_movies.json";
-//instead of database
-export const getMovies = () => {
-  const dataset = fetch(API_URL)
-    .then(res => res.json())
-    .then(json => json.data.movies)
-  console.log(dataset);
-  return dataset;
-}
+export const getMovies = async () => {
+  const {
+    data: {
+      data: { movies }
+    }
+  } = await axios(LIST_MOVIES_URL);
+  
+  return movies;
+};
 
-export const goodMovies = (score) => {
-  const datasets = fetch(API_URL)
-    .then(res => res.json())
-    .then(json => json.data.movies);
-}
+export const getMovie = async id => {
+  const {
+    data: {
+      data: { movies }
+    }
+  } = await axios(LIST_MOVIES_URL);
+  let obj = {};
+  const movie = movies.map(arg => {
+    if (id === arg.id){
+      
+      obj = arg;
+      console.log(obj)
+      return arg;
+    }
+  });
+  console.log(`Result: ${obj}`)
+  return obj;
+};

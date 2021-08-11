@@ -1,9 +1,9 @@
-import {getMovies} from "./db";
+import {getMovies, getMovie} from "./db";
 
 const resolvers = {
     Query: {
         movies: () => getMovies(),
-        //movie: (_,arg) => 
+        movie: (_, { id }) => getMovie(id),
     }
 };
 
