@@ -16,6 +16,19 @@ export const getMovies = async () => {
 export const getMovie = async id => {
   const {
     data: {
+      data: { movie }
+    }
+  } = await axios(MOVIE_DETAILS_URL, {
+    params: {
+      movie_id: id
+    }
+  });
+  return movie;
+};
+
+/**export const getMovie = async id => {
+  const {
+    data: {
       data: { movies }
     }
   } = await axios(LIST_MOVIES_URL);
@@ -30,4 +43,4 @@ export const getMovie = async id => {
   });
   console.log(`Result: ${obj}`)
   return obj;
-};
+}; **/
